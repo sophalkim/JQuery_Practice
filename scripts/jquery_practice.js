@@ -1,3 +1,8 @@
-window.onload = function() {
-	alert( "welcome");
-}
+
+// window.onload = function() {
+// 	alert( "welcome");
+// }
+
+$(document).ready(function() {
+	alert("welcome");
+});
