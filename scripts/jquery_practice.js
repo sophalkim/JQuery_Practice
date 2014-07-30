@@ -17,6 +17,5 @@ $(document).ready(function() {
 $("a").addClass("test");
 
 $("a").click(function() {
-	event.preventDefault();
 	$(this).hide("slow");
 });
