@@ -24,5 +24,28 @@
 		}, false);
 	</script>
 
+	<script>
+		var stuffToDo = {
+
+			"bar": function() {
+				alert("the value was bar -- yay!");
+			},
+
+			"baz": function() {
+				alert("boo baz:(");
+			},
+
+			"default": function() {
+				alert("everything else is just ok");
+			}
+		};
+
+		if (stuffToDo[foo]) {
+			stuffToDo[foo]();
+		} else {
+			stuffToDo["default"]();
+		}
+	</script>
+
 </body>
 </html>
