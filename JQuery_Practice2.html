@@ -45,6 +45,61 @@
 		} else {
 			stuffToDo["default"]();
 		}
+
+		var myArray = [1,3,5,6,7];
+		function printElement(elem) {
+			console.log(elem);
+		}
+		myArray.forEach(printELement);
+
+		var myObject = {
+			sayHello: function() {
+				console.log("Hello");
+			},
+			myName: "Rebecca"
+		};
+
+		myObject.sayHello();
+		console.log(myObject.myName);
+
+		var greet = function(person, greeting) {
+			var text = greeting + ", " + person;
+			console.log(text);
+		};
+		greet("Rebecca", "Hello");
+
+		var greet = function(person, greeting) {
+			var text = greeting + ", " + person;
+			return text;
+		}
+		console.log(greet("Rebecca", "Hello"));
+
+		var greet = function(person, greeting) {
+			var text = greeting + ", " + person;
+			return function() {
+				console.log(text);
+			};
+		};
+
+		var greeting = greet("Rebecca", "Hello");
+		greeting();
+
+		var myFn = function (fn) {
+			var result = fn();
+			console.log(result);
+		}
+		myFn( function() {
+			return "Hello World";
+		});
+
+		var myFn = function (fn) {
+			var result = fn();
+			console.log(result);
+		}
+		var helloWorld = function () {
+			return "HelloWorld";
+		};
+		myFn(helloWorld);
 	</script>
 
 </body>
