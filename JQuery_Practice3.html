@@ -85,6 +85,24 @@
 		$("form: selected");
 		$("form: submit");
 		$("form: text");
+
+		// Using a setter
+		$("h1").html("Hello World");
+		// Using a getter
+		$("h1").html();
+
+		$("#content")
+			.find("h3")
+			.eq(2)
+			.html("new text for the third h3");
+
+		$("#content")
+			.find("h3")
+			.eq(2)
+				.html("new text for the third h3!")
+				.end()
+			.eq(0)
+				.html("new text for the first h3!");
 	</script>
 </head>
 <body>
