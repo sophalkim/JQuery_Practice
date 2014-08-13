@@ -100,6 +100,87 @@
 			return "HelloWorld";
 		};
 		myFn(helloWorld);
+
+		var myObject = {
+			sayHello: function() {
+				console.log("Hi! My name is " + this.myName);
+			}
+			myName: "Rebecca";
+		};
+
+		var secondObject = {
+			myName: "Colin";
+		}
+
+		myObject.sayHello();
+		myObject.sayHello.call(secondObject);
+
+		var myName = "the global object";
+		var sayHello = function() {
+			console.log("Hi! My name is " + this.myName);
+		};
+		var myObject = {
+			myName: "Rebecca";
+		};
+		var myObjectHello = sayHello.bind(myObject);
+		sayHello();
+		myObjectHello();
+
+		var myName = "the global object";
+		var sayHello = function() {
+			console.log("Hi! My name is " + this.myName);
+		};
+		var myObject = {
+			myName: "Rebecca";
+		};
+		var secondObject = {
+			myName: "Colin";
+		};
+		myObject.sayHello = sayHello;
+		secondObject.sayHello = sayHello;
+
+		sayHello();
+		myObject.sayHello();
+		secondObject.sayHello();
+
+		var myNameSpace = {
+			myObject: {
+				sayHello: function() {
+					console.log("Hi! My name is " + this.myName);
+				},
+				myName: "Rebecca"
+			}
+		};
+		var obj = myNameSpace.myObject;
+		obj.sayHello();
+
+		function() {
+			var jQuery = {};
+			window.JQuery = jQuery;
+		};
+
+		function outer() {
+			var x = 5;
+			function inner() {
+				console.log(x);
+			}
+			inner();
+		}
+
+		for (var i = 0; i < 5; i++) {
+			setTimeout(function() {
+				alert(i);
+			}, i * 100);
+		}
+
+		var createFunction = function(i) {
+			return function() {
+				alert(i);
+			};
+		};
+		for (var i = 0; i < 5; i++) {
+			setTimeout( createFunction(i), i * 100);
+		}
 	</script>
 
 </body>
