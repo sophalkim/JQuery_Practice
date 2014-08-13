@@ -15,6 +15,21 @@
 
 
 	<script>
+		var $j = jQuery.noConflict();
+		$j(document).ready(function() {
+			$j("div").hide();
+		});
+		window.onload = function() {
+			var mainDiv = $("main");
+		}
+
+		jQuery.noConflict();
+		jQuery(document).ready(function($) {
+			$("div").hide();
+		});
+		window.onload = function() {
+			var mainDiv = $("main");
+		}
 	</script>
 </head>
 <body>
