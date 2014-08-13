@@ -181,6 +181,57 @@
 		for (var i = 0; i < 5; i++) {
 			setTimeout( createFunction(i), i * 100);
 		}
+
+		var outerObj = {
+			myName: "outer",
+			outerFunction: function() {
+				var self = this;
+				var innerObj = {
+					myName: "inner",
+					innerFunction: function() {
+						console.log(self.myName, this.myName);
+					}
+				};
+				innerObj.innerFunction();
+				console.log(this.myName);
+			}
+		};
+		outerObj.outerFunction();
+
+		if (!Function.prototype.bind) {
+			Function.prototype.bind = function(oThis) {
+				if (typeof this !== "function") {
+					throw new TypeError("Function.prototype.bind - what is trying to ")
+				}
+				var fSlice = Array.prototype.slice,
+					aArgs = fslice.call(argument, 1),
+					fToBind = this,
+					fNOP = function() {},
+					fBound = function() {
+						return fToBind.apply(this instanceof fNOP
+							? this
+							: oThis || window,
+							aArgs.concat(fSlice.call(arguments)));
+					};
+				fNOP.prototype = this.prototype;
+				fBound.prototype = new fNOP();
+				return fBound;
+			};
+		}
+
+		var user = "johnsmith";
+		var module = {
+			getUser: function() {
+				return this.user;
+			},
+			user: "janedoe";
+		};
+		module.getUser();
+		var getUser = module.getUser;
+		getUser();
+		var boundGetUser = getUser.bind(module);
+		boundGetUser();
+
 	</script>
 
 </body>
