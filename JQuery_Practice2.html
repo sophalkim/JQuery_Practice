@@ -232,6 +232,19 @@
 		var boundGetUser = getUser.bind(module);
 		boundGetUser();
 
+		$(document).ready(function() {
+			console.log("ready");
+		});
+		$(function() {
+			console.log("ready");
+		});
+
+		function readyFn( jQuery) {
+
+		}
+		$(document).ready(readyFn);
+		$(window).load(readyFn);
+
 	</script>
 
 </body>
